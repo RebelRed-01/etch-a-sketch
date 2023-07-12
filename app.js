@@ -1,6 +1,8 @@
 const grid = document.querySelector('.grid');
 const sizeSlct = document.querySelector('.size');
+const penBtn = document.querySelector('.pen');
 const eraseBtn = document.querySelector('.erase');
+const clearBtn = document.querySelector('.clear');
 
 let setGrid = (size = 16) => {
     for (let i  = 0; i < `${size}`; i++) {
@@ -17,7 +19,23 @@ let setGrid = (size = 16) => {
                     tile.style.backgroundColor = 'black';
                 })
             } 
+            const erase = () => {
+                tile.addEventListener('mouseover', () => {
+                    tile.style.backgroundColor = 'white';
+                })
+            } 
             draw();
+            penBtn.addEventListener('click', () => {
+                draw();
+            })
+            eraseBtn.addEventListener('click', () => {
+                erase();
+            })
+            clearBtn.addEventListener('click', () => {
+                tile.style.backgroundColor = 'white';
+                draw();
+            })
+
         }
     }
 }
@@ -34,5 +52,7 @@ sizeSlct.addEventListener('click', () => {
         setGrid(newSize);
     }
 })
+
+
 
 
